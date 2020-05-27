@@ -1,0 +1,60 @@
+FROM php:7.4-fpm
+
+# Version
+ENV PHPREDIS_VERSION 4.0.0
+
+# Timezone
+RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo 'Asia/Shanghai' > /etc/timezone
+
+# Libs
+RUN apt-get update \
+      && apt-get install -y \
+           curl \
+           wget \
+           git \
+           openssl \
+           zip \
+           libz-dev \
+           libssl-dev \
+           libnghttp2-dev \
+           libpcre3-dev \
+           libpng-dev \
+           libjpeg-dev \
+           libpq-dev \
+           pdftk \
+           libzip-dev \
+           librabbitmq-dev \
+       && apt-get clean \
+       && apt-get autoremove
+
+# 安装定时任务
+RUN apt-get update --fix-missing \
+    && apt-get install -y cron
+
+# Composer
+RUN curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer \
+    && composer self-update --clean-backups
+
+# PDO extension
+RUN docker-php-ext-install pdo_mysql
+
+# Bcmath extension
+RUN docker-php-ext-install bcmath
+
+RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr
+RUN docker-php-ext-install \
+    gd \
+    mbstring \
+    zip
+
+# Redis extension
+RUN wget http://pecl.php.net/get/redis-${PHPREDIS_VERSION}.tgz -O /tmp/redis.tar.tgz \
+    && pecl install /tmp/redis.tar.tgz \
+    && rm -rf /tmp/redis.tar.tgz \
+    && docker-php-ext-enable redis
+
+COPY php.ini /usr/local/etc/php/php.ini
+
+WORKDIR /home/httpd/

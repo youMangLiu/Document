@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d68344868e59c8e2d3750caa87c3b192",
+    "packages": [
+        {
+            "name": "multilinguals/apollo-client",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/multilinguals/apollo-php-client.git",
+                "reference": "497dd462549ae98f0432009f33f4146f758d67b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/multilinguals/apollo-php-client/zipball/497dd462549ae98f0432009f33f4146f758d67b6",
+                "reference": "497dd462549ae98f0432009f33f4146f758d67b6",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "~7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Org\\Multilinguals\\Apollo\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "apollo client for php",
+            "homepage": "https://github.com/multilinguals/apollo-php-client",
+            "keywords": [
+                "apollo",
+                "client"
+            ],
+            "time": "2018-12-27T07:18:35+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

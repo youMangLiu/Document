@@ -1,0 +1,45 @@
+[
+    {
+        "name": "multilinguals/apollo-client",
+        "version": "v0.1.2",
+        "version_normalized": "0.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/multilinguals/apollo-php-client.git",
+            "reference": "497dd462549ae98f0432009f33f4146f758d67b6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/multilinguals/apollo-php-client/zipball/497dd462549ae98f0432009f33f4146f758d67b6",
+            "reference": "497dd462549ae98f0432009f33f4146f758d67b6",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": "~7.0"
+        },
+        "time": "2018-12-27T07:18:35+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Org\\Multilinguals\\Apollo\\Client\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "apollo client for php",
+        "homepage": "https://github.com/multilinguals/apollo-php-client",
+        "keywords": [
+            "apollo",
+            "client"
+        ]
+    }
+]

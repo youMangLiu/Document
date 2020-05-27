@@ -1,0 +1,24 @@
+From ip2.axhome.com.cn/anxin/php7:1.2
+Maintainer php7:1.2_with-yaml_with-nginx_with-ppgo
+RUN apt-get update \
+    && apt-get install -y \
+        libyaml-dev \
+    && pecl install yaml \
+    && docker-php-ext-enable yaml \
+    && mkdir -p /var/log/app \
+    && touch /var/log/app/php7_error_log \
+    && touch /var/log/app/php7_fpm_slow.cutlog \
+    && chown -R 1000.1000 /var/log/app/ \
+    && apt-get -y install nginx
+
+COPY nginx.conf /etc/nginx/
+COPY fastcgi_params /etc/nginx/conf.d/
+COPY supervisord.conf /etc/supervisor/conf.d/
+COPY --chown=webid:webid PPGo_Job-Agent/ /opt/PPGo_Job-Agent/
+
+WORKDIR /opt/PPGo_Job-Agent/
+
+EXPOSE 80
+EXPOSE 9000
+
+CMD ["/usr/bin/supervisord"]
